@@ -1,0 +1,211 @@
+/* responsive.css */
+
+@media (max-width: 1024px) {
+    :root {
+        --font-size-6xl: 3rem;
+        --font-size-5xl: 2.5rem;
+        --font-size-4xl: 2rem;
+        --font-size-3xl: 1.75rem;
+    }
+    
+    .navbar__cta {
+        display: inline-block;
+    }
+    
+    .about__grid,
+    .contact__grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-12);
+    }
+    
+    .about__stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --container-padding: var(--spacing-4);
+        --font-size-6xl: 2.5rem;
+        --font-size-5xl: 2rem;
+        --font-size-4xl: 1.75rem;
+        --font-size-3xl: 1.5rem;
+    }
+    
+    .navbar {
+        padding-top: var(--spacing-3);
+        padding-bottom: var(--spacing-3);
+    }
+    
+    .navbar__logo {
+        height: 40px;
+    }
+    
+    .navbar__toggle {
+        display: flex;
+        z-index: 1001;
+    }
+    
+    .navbar__menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 280px;
+        background-color: var(--color-white);
+        box-shadow: var(--shadow-2xl);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--spacing-20) var(--spacing-6);
+        gap: var(--spacing-4);
+        transform: translateX(100%);
+        transition: transform var(--transition-base);
+    }
+    
+    .navbar__menu.active {
+        transform: translateX(0);
+    }
+    
+    .navbar__link {
+        width: 100%;
+        padding: var(--spacing-3) 0;
+        font-size: var(--font-size-lg);
+    }
+    
+    /* ADICIONE ESTAS LINHAS: */
+    .navbar__cta {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top: var(--spacing-4);
+        order: 10; /* Coloca por último */
+    }
+    
+    .navbar__item {
+        order: 1; /* Coloca os links primeiro */
+    }
+    
+    .hero__title {
+        font-size: var(--font-size-4xl);
+    }
+    
+    .hero__subtitle {
+        font-size: var(--font-size-base);
+    }
+    
+    .hero__cta-group {
+        flex-direction: column;
+    }
+    
+    .hero__cta-group .btn {
+        width: 100%;
+    }
+    
+    section {
+        padding-top: var(--spacing-12);
+        padding-bottom: var(--spacing-12);
+    }
+    
+    .services__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about__stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .links__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer__grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-8);
+    }
+    
+    .footer__bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --font-size-6xl: 2rem;
+        --font-size-5xl: 1.75rem;
+        --font-size-4xl: 1.5rem;
+    }
+    
+    .btn--lg {
+        padding: var(--spacing-3) var(--spacing-6);
+        font-size: var(--font-size-base);
+    }
+    
+    .service-card {
+        padding: var(--spacing-6);
+    }
+    
+    .cta-banner__content {
+        padding: var(--spacing-12) 0;
+    }
+    
+    .form {
+        padding: var(--spacing-6);
+    }
+    
+    .scroll-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: var(--spacing-4);
+        right: var(--spacing-4);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .hero__scroll {
+        animation: none;
+    }
+    
+    .hero__scroll-icon::before {
+        animation: none;
+    }
+}
+
+@media print {
+    .header,
+    .navbar,
+    .hero__scroll,
+    .cta-banner,
+    .scroll-to-top,
+    .footer__social {
+        display: none;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+    }
+    
+    a {
+        text-decoration: underline;
+        color: #000;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+    }
+    
+    section {
+        page-break-inside: avoid;
+    }
+}
