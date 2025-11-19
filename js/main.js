@@ -122,7 +122,7 @@
 
                 const formData = new FormData(form);
 
-                fetch('https://formspree.io/f/SEU_ID_AQUI', {
+                fetch('https://formspree.io/f/mldzneeo', {
                 method: 'POST',
                 body: formData,
                 headers: { 'Accept': 'application/json' }
@@ -361,3 +361,4 @@
     }
 
 })();
+
