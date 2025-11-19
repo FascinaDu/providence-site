@@ -122,18 +122,17 @@
             });
 
             form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
                 let isValid = true;
-                
+
                 inputs.forEach(input => {
                     if (!this.validateField(input)) {
                         isValid = false;
                     }
                 });
 
-                if (isValid) {
-                    this.submitForm(form);
+                // Se tiver erro, impede o envio
+                if (!isValid) {
+                    e.preventDefault();
                 }
             });
         },
