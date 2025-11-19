@@ -104,36 +104,37 @@
 
         setupFormValidation() {
             const form = document.getElementById('contact-form');
-            
             if (!form) return;
 
             const inputs = form.querySelectorAll('.form__input, .form__textarea');
 
-            inputs.forEach(input => {
-                input.addEventListener('blur', () => {
-                    this.validateField(input);
-                });
-
-                input.addEventListener('input', () => {
-                    if (input.classList.contains('is-invalid')) {
-                        this.validateField(input);
-                    }
-                });
-            });
-
             form.addEventListener('submit', (e) => {
-                let isValid = true;
+                e.preventDefault();
 
+                let isValid = true;
                 inputs.forEach(input => {
-                    if (!this.validateField(input)) {
-                        isValid = false;
-                    }
+                if (!this.validateField(input)) {
+                    isValid = false;
+                }
                 });
 
-                // Se tiver erro, impede o envio
-                if (!isValid) {
-                    e.preventDefault();
-                }
+                if (!isValid) return;
+
+                const formData = new FormData(form);
+
+                fetch('https://formspree.io/f/SEU_ID_AQUI', {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+                })
+                .then((response) => {
+                if (!response.ok) throw new Error('Erro ao enviar');
+                this.showSuccessMessage(form);
+                form.reset();
+                })
+                .catch(() => {
+                this.showErrorMessage(form);
+                });
             });
         },
 
